@@ -1,0 +1,4 @@
+com\spring\config\DBConfig.class
+com\spring\dao\ProductDAOImpl.class
+com\spring\dao\ProductDAO.class
+com\spring\model\Product.class
