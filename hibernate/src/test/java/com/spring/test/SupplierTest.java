@@ -12,18 +12,21 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import com.spring.config.DBConfig;
-import com.spring.dao.ProductDAO;
-import com.spring.model.Product;
+import com.spring.dao.CategoryDAO;
+import com.spring.dao.SupplierDAO;
+import com.spring.model.Category;
+import com.spring.model.Supplier;
+
 
 @SuppressWarnings("unused")
 @ComponentScan("com.spring")
-public class ProductTest {
+public class SupplierTest {
 	
 	
 	@Autowired
-	private static Product product;
-	@Autowired
- private static ProductDAO productDAO;
+	private static Supplier supplier;
+	@Autowired	
+ private static SupplierDAO supplierDAO;
 	
 	@SuppressWarnings("resource")
 	@BeforeClass
@@ -31,31 +34,29 @@ public class ProductTest {
 	{
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
 		context.register(DBConfig.class);
+		//context.scan("com.spring.*");
 		context.refresh();
 		
-		product=(Product) context.getBean("product");
-		productDAO=(ProductDAO) context.getBean("productDAO");
+		supplier=(Supplier) context.getBean("supplier");
+		supplierDAO=(SupplierDAO) context.getBean("supplierDAO");
+		
 	
 	}
-	
 	@Test
-	public void createProduct()
+	public void createSupplier()
 	{
-		Product product=new Product();
-		//product.setId(1);
-		product.setName("xyz");
-		product.setQuantity(100);
-		product.setPrice(5);
-		/*product.setId(24);
-		product.setName("fgt");
-		product.setQuantity(90);
-		product.setPrice(700);*/
+		Supplier supplier=new Supplier();
 		
-		boolean flag=productDAO.saveProduct(product);
+		supplier.setName("abc");
+		supplier.setQuantity(25);
+		supplier.setPrice(467);
+	
+		boolean flag=supplierDAO.saveSupplier(supplier);
 		
-		assertEquals("createProductTestCase", true, flag);
+		assertEquals("createSupplierTestCase", true, flag);
 		
 		
 	}
+	
 	
 }

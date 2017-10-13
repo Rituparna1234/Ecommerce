@@ -1,7 +1,5 @@
 package com.spring.dao;
-
 import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
@@ -10,17 +8,18 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.model.Category;
+import com.spring.model.Supplier;
 import com.spring.model.Cart;
-import com.spring.model.Product;
 
 @Repository
-public class ProductDAOImpl implements ProductDAO {
+public class SupplierDAOImpl implements SupplierDAO {
 	
 	
 	@Autowired
 private SessionFactory sessionFactory;
 
-public ProductDAOImpl(SessionFactory sessionFactory) {
+public SupplierDAOImpl(SessionFactory sessionFactory) {
 		
 		this.sessionFactory=sessionFactory;
 	
@@ -32,43 +31,15 @@ public ProductDAOImpl(SessionFactory sessionFactory) {
 		return true;
 	}
 */
-
 @Transactional
-public boolean saveProduct(Product product) {
+public boolean saveSupplier(Supplier supplier) {
 	
 	Session session=sessionFactory.getCurrentSession();
+	session.saveOrUpdate(supplier);
+	//session.flush();
 	//Transaction tx=session.beginTransaction();
-	session.saveOrUpdate(product);
 	//tx.commit();
 	
-	//session.close();
 	return true;
 }
 }
-
-/*public boolean addProduct(Product product) {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-public boolean updateProduct(Product product) {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-public boolean deleteProduct(Product product) {
-	// TODO Auto-generated method stub
-	return false;
-}
-
-public Cart getCartItem(int CartItemId) {
-	// TODO Auto-generated method stub
-	return null;
-}
-
-public List<Cart> getCartItems(String username) {
-	// TODO Auto-generated method stub
-	return null;
-}
-}
-*/

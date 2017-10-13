@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.spring.model.Cart;
 import com.spring.model.Product;
+import com.spring.model.Supplier;
 
-public interface ProductDAO {
+public interface SupplierDAO {
 	
-	public boolean saveProduct(Product product);
+	public boolean saveSupplier(Supplier supplier);
 	
 	
 

@@ -12,18 +12,19 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import com.spring.config.DBConfig;
-import com.spring.dao.ProductDAO;
-import com.spring.model.Product;
+import com.spring.dao.CategoryDAO;
+import com.spring.model.Category;
+
 
 @SuppressWarnings("unused")
 @ComponentScan("com.spring")
-public class ProductTest {
+public class CategoryTest {
 	
 	
 	@Autowired
-	private static Product product;
-	@Autowired
- private static ProductDAO productDAO;
+	private static Category category;
+	@Autowired	
+ private static CategoryDAO categoryDAO;
 	
 	@SuppressWarnings("resource")
 	@BeforeClass
@@ -31,31 +32,29 @@ public class ProductTest {
 	{
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
 		context.register(DBConfig.class);
+		//context.scan("com.spring.*");
 		context.refresh();
 		
-		product=(Product) context.getBean("product");
-		productDAO=(ProductDAO) context.getBean("productDAO");
+		category=(Category) context.getBean("category");
+		categoryDAO=(CategoryDAO) context.getBean("categoryDAO");
+		
 	
 	}
-	
 	@Test
-	public void createProduct()
+	public void createCategory()
 	{
-		Product product=new Product();
-		//product.setId(1);
-		product.setName("xyz");
-		product.setQuantity(100);
-		product.setPrice(5);
-		/*product.setId(24);
-		product.setName("fgt");
-		product.setQuantity(90);
-		product.setPrice(700);*/
+		Category category=new Category();
 		
-		boolean flag=productDAO.saveProduct(product);
+		category.setName("abc");
+		category.setQuantity(25);
+		category.setPrice(467);
+	
+		boolean flag=categoryDAO.saveCategory(category);
 		
-		assertEquals("createProductTestCase", true, flag);
+		assertEquals("createCategoryTestCase", true, flag);
 		
 		
 	}
+	
 	
 }
