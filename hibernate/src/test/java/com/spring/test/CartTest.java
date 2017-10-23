@@ -77,11 +77,8 @@ public class CartTest
 		//cart.setId(10);
 		cart.setName("xyz");
 		cart.setStatus("yes");
-		//cart.setProductname("ice cream");
 		cart.setQuantity(10);
 		cart.setPrice(500);
-		//cart.setStatus("y");
-		//cart.setUsername("Anuroop");
 		boolean flag=cartDAO.deleteCart(128);
 		assertEquals("createCartTestCase", true, flag);
 	}

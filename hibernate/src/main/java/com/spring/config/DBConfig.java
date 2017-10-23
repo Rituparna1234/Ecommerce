@@ -84,7 +84,7 @@ public class DBConfig  {
 	@Autowired
 	@Bean(name= "productDAO")
 	public ProductDAOImpl getProductDAO(SessionFactory sessionFactory) {
-	    return  new ProductDAOImpl(sessionFactory);
+	    return  new ProductDAOImpl();
 	}
 	@Autowired
 	@Bean(name= "categoryDAO")
