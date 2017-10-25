@@ -41,9 +41,9 @@
 				</div>
 				<br/>
 				<div class="form-group row">
-					<label for="Supplier_Name" class="col-xs-4 control-label">Supplier Name</label>
+					<label for="Supplier_Name" class="col-xs-4 control-label">Supplier_Name</label>
 					<div class="col-xs-4">
-						<form:input name="supplierName" path="supplier_Name" placeholder="Supplier Name" class="form-control" />
+						<form:input name="supplier_Name" path="supplier_Name" placeholder="Supplier Name" class="form-control" />
 					</div>
 				</div>
 				

@@ -1,4 +1,5 @@
-com\niit\frontend\HomeController.class
-com\niit\frontend\CategoryController.class
-com\niit\frontend\SupplierController.class
-com\niit\frontend\ProductController.class
+com\spring\frontend\SupplierController.class
+com\spring\frontend\CategoryController.class
+com\spring\frontend\ImageController.class
+com\spring\frontend\ProductController.class
+com\spring\frontend\HomeController.class

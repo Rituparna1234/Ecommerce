@@ -86,7 +86,7 @@ ${ExistingMessage}
 
 
 			<div class="pi-img-wrapper">
-										<img src="/Front/myImage/imageDisplay?id=${product.id}"
+										<img src="/NIITFrontend/myImage/imageDisplay?id=${product.id}"
 											class="img-responsive" style="width: 180px; height: 250px">
 										<div>				</div>
 			</div>
