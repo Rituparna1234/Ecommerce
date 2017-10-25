@@ -2,18 +2,16 @@ package com.spring.dao;
 
 import java.util.List;
 
-import com.spring.model.Cart;
 import com.spring.model.Product;
 
 public interface ProductDAO {
-	
 	public boolean saveProduct(Product product);
-	public boolean updateProduct(Product product);
-	public boolean deleteProduct(int id);
-	public Product getProductItem(int ProductItemId);
-	public List<Product> getProductItems(String username);
-
-
+	public List<Product> list();
+	public Product getProductById(int product_id);
+	public Product removeProductById(int product_id);
+	public List<Product>getProductByCategory(int category_id);
+	public List<Product>getProductByCategoryID(int category_id);
+	public List<Product>homeList();
+	
+	public Product getItem(int id) ;
 }
-
-

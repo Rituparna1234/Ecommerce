@@ -1,4 +1,4 @@
-package com.spring.test;
+/*package com.spring.test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -10,17 +10,19 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import com.spring.config.DBConfig;
 import com.spring.dao.CartDAO;
-import com.spring.dao.ProductDAO;
+import com.spring.dao.UserDetailsDAO;
 import com.spring.model.Cart;
-import com.spring.model.Product;
+import com.spring.model.UserDetails;
 
 @SuppressWarnings("unused")
 @ComponentScan("com.spring")
+
+@Ignore
 public class CartTest 
 {	
-	/*@Autowired
+	@Autowired
 	private static Product product;
-	*/
+	
 	@Autowired
 	private static CartDAO cartDAO;
 	
@@ -47,23 +49,25 @@ public class CartTest
 		//cart.setId(1);
 		cart.setName("XYZ");
 		cart.setPrice(2500);
-		cart.setStatus("yes");
+		cart.setAddress("gtduygwigf");
 		cart.setQuantity(3);
+		cart.setContactno(987654321);
+		
 		
 		boolean flag=cartDAO.saveCart(cart);
-		assertEquals("createCartTestCase", true, flag);
+		assertEquals("createcartTestCase", true, flag);
 	}
 	@Ignore
 	@Test
 	public void updateCart()
 	{
-		Cart cart=new Cart();
+	     Cart cart=new Cart();
 		//cart.setId(1);
-		cart.setName("XYZ");
-		cart.setPrice(2500);
-		cart.setStatus("no");
-		cart.setQuantity(3);
-		
+				cart.setName("XYZ");
+				cart.setPrice(2500);
+				cart.setAddress("gtduygwigf");
+				cart.setQuantity(3);
+				cart.setContactno(987654321);
 	
 		//boolean flag=cartDAO.updateCart(cart);
 		assertEquals("problem in cart", cartDAO.updateCart(cart));
@@ -74,15 +78,16 @@ public class CartTest
 	public void deleteCart()
 	{
 		Cart cart = new Cart();
-		//cart.setId(10);
-		cart.setName("xyz");
-		cart.setStatus("yes");
-		cart.setQuantity(10);
-		cart.setPrice(500);
-		boolean flag=cartDAO.deleteCart(128);
+		cart.setName("XYZ");
+		cart.setPrice(2500);
+		cart.setAddress("gtduygwigf");
+		cart.setQuantity(3);
+		cart.setContactno(987654321);
+		boolean flag=cartDAO.deleteCart(162);
 		assertEquals("createCartTestCase", true, flag);
 	}
 	
 }
 
 
+*/

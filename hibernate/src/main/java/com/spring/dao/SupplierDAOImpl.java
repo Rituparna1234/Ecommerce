@@ -1,7 +1,12 @@
 package com.spring.dao;
+
+import java.util.Iterator;
 import java.util.List;
+
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,36 +15,67 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.model.Category;
 import com.spring.model.Supplier;
-import com.spring.model.Cart;
+
 
 @Repository
 public class SupplierDAOImpl implements SupplierDAO {
-	
-	
 	@Autowired
-private SessionFactory sessionFactory;
-
-public SupplierDAOImpl(SessionFactory sessionFactory) {
-		
-		this.sessionFactory=sessionFactory;
+	private SessionFactory sessionFactory;
+	@Autowired
+	private SupplierDAO supplierDAO;
 	
-	}/*
-@Transactional
-	public boolean saveProduct(Product product) {
-	
-	sessionFactory.getCurrentSession().saveOrUpdate(product);
-		return true;
+	public SupplierDAO getSupplierDAO() {
+		return supplierDAO;
 	}
-*/
-@Transactional
-public boolean saveSupplier(Supplier supplier) {
+	public void setSupplierDAO(SupplierDAO supplierDAO) {
+		this.supplierDAO = supplierDAO;
+	}
 	
-	Session session=sessionFactory.getCurrentSession();
-	session.saveOrUpdate(supplier);
-	//session.flush();
-	//Transaction tx=session.beginTransaction();
-	//tx.commit();
+	public SupplierDAOImpl(SessionFactory sessionFactory)
+	{
+		this.sessionFactory=sessionFactory;
+	}
+
 	
-	return true;
-}
+	@Transactional
+	public boolean saveSupplier(Supplier supplier) {
+		// TODO Auto-generated method stub
+		 sessionFactory.getCurrentSession().saveOrUpdate(supplier);
+		 return true;
+	}
+	@Transactional
+	public List<Supplier> list() {
+		@SuppressWarnings("unchecked")
+		List<Supplier> listSupplier = (List<Supplier>) sessionFactory.getCurrentSession()
+				.createCriteria(Supplier.class)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		return listSupplier;
+	}
+	
+	@Transactional
+	public Supplier getSupplierById(int supplier_id) {
+		String hql = "from"+" Supplier"+" where id=" + supplier_id;
+		@SuppressWarnings("rawtypes")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		
+		@SuppressWarnings("unchecked")
+		List<Supplier> listSupplier = (List<Supplier>) ((org.hibernate.Query) query).list();
+		
+		if (listSupplier != null && !listSupplier.isEmpty()) {
+			return listSupplier.get(0);
+		}
+		
+		return null;
+	}
+
+
+	@Transactional
+	public Supplier removeSupplierById(int supplier_id) {
+		 Supplier  SupplierToDelete = new  Supplier();
+		 SupplierToDelete.setSupplier_id( supplier_id);
+		sessionFactory.getCurrentSession().delete( SupplierToDelete);
+		return  SupplierToDelete;
+	}
+
 }

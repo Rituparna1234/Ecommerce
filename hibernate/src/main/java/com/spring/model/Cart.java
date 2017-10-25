@@ -7,25 +7,28 @@ import javax.persistence.Id;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Component
+@Component("cart")
 public class Cart {
 	
 	@Id
 	@GeneratedValue
 	private int id;
 	private String name;
-	private String status;
+	private int quantity;
+	private double price;
+	private String address;
+	private int contactno;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -33,19 +36,24 @@ public class Cart {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public String getAddress() {
+		return address;
 	}
-	private int quantity;
-	private int price;
-	public int getId() {
-		return id;
+	public void setAddress(String address) {
+		this.address = address;
 	}
+	public double getContactno() {
+		return contactno;
 	}
+	public void setContactno(int contactno) {
+		this.contactno = contactno;
+	}
+
 	
+	}

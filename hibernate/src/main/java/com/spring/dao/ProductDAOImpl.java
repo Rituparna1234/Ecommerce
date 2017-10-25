@@ -1,87 +1,106 @@
 package com.spring.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transaction;
-
-import org.hibernate.Hibernate;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.model.Cart;
 import com.spring.model.Product;
-@Repository
-public class ProductDAOImpl implements ProductDAO {
-@Autowired
-SessionFactory sessionFactory;
-@Transactional
-public boolean saveProduct(Product product) {
-		try{
-			sessionFactory.getCurrentSession().saveOrUpdate(product);
-			return true;
-		}
-		catch(Exception e){
-		
-		return false;
-		}
-	}
-@Transactional
-	public boolean updateProduct(Product product) {
-		try{
-			sessionFactory.getCurrentSession().saveOrUpdate(product);
-			return true;
-		}
-		catch(Exception e){
-		
-		return false;
-		}
-	}
-@Transactional
-/*public boolean deleteCart(Cart cart) {
-		try{
-			sessionFactory.getCurrentSession().delete(cart);
-			return true;
-		}
-		catch(Exception e){
-		
-		return false;
-		}
-		}
-		*/
-public boolean deleteProduct(int id) {
-	// TODO Auto-generated method stub
-	sessionFactory.getCurrentSession().createQuery("DELETE FROM Product WHERE id = "+id).executeUpdate();
-	return true;
-}
 
+public class ProductDAOImpl implements ProductDAO{
+	@Autowired
+	SessionFactory sessionFactory;
+
+	public ProductDAOImpl(SessionFactory sessionFactory) {
+		
+		this.sessionFactory = sessionFactory;
+	}
+	
 @Transactional
-	public Product getProductItem(int ProductItemId) {
-		Session session=sessionFactory.openSession();
-		Product product=(Product)session.get(Product.class,ProductItemId);
-		session.close();
-		session.flush();
+	public boolean saveProduct(Product product) {
+		// TODO Auto-generated method stub
+		System.out.println("Persisting Product object started.........");
+		sessionFactory.getCurrentSession().saveOrUpdate(product);
+		System.out.println("Product has been saved successfully....");
+		return true;
+	}
+
+@SuppressWarnings({ "unchecked", "rawtypes" })
+@Transactional
+	public List<Product> list() {
+		// TODO Auto-generated method stub
+		List<Product> product = sessionFactory.getCurrentSession().createCriteria(Product.class).list();
 		return product;
 	}
-		
 @Transactional
-	public List<Product> getProductItems(String username) {
-		List<Product> product = new ArrayList<Product>();
-        Transaction trns = null;
-        Session session =sessionFactory.openSession();
-        try {
-            trns = (Transaction) session.beginTransaction();
-            product = session.createQuery("from product").list();
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        } finally {
-            session.flush();
-            session.close();
-        }
-        return product;
-}
+	public Product getProductById(int product_id) {
+		// TODO Auto-generated method stub
+	String hql = "from" + " Product" + " where id=" + product_id;
+	@SuppressWarnings("rawtypes")
+	Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+	@SuppressWarnings("unchecked")
+	List<Product> listProduct = (List<Product>) query.list();
+
+	if (listProduct != null && !listProduct.isEmpty()) {
+		return listProduct.get(0);
+	}
+
+	return null;
+	}
+@Transactional
+	public Product removeProductById(int product_id) {
+		// TODO Auto-generated method stub
+		Product ProductToDelete = new Product();
+		ProductToDelete.setId(product_id);
+		sessionFactory.getCurrentSession().delete(ProductToDelete);
+		return ProductToDelete;
+	}
+@Transactional
+	public List<Product> getProductByCategory(int category_id) {
+		// TODO Auto-generated method stub
+		String hql = "from" + " Product" + " where id=" +category_id;
+		@SuppressWarnings("rawtypes")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+		
+		List<Product> listProduct = (List<Product>) ((ProductDAOImpl) query).list();
+
+		if (listProduct != null && !listProduct.isEmpty()) {
+			return (List<Product>) listProduct.get(0);
+		}
+		return null;
+	}
+@Transactional
+	public List<Product> getProductByCategoryID(int category_id) {
+		// TODO Auto-generated method stub
+		String hql = "from Product where category_id= "+category_id;
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		List<Product> catproducts = (List<Product>) ((ProductDAOImpl) query).list();
+		return catproducts;
+	}
+@Transactional
+	public List<Product> homeList() {
+		// TODO Auto-generated method stub
+	/*	String hql="from Product ORDER BY RAND()";
+		@SuppressWarnings("rawtypes")
+		Query query=sessionFactory.getCurrentSession().createQuery(hql).setMaxResults(6);
+		@SuppressWarnings("unchecked")
+		List<Product> listProduct = (List<Product>) ((ProductDAOImpl) query).list();
+		if (listProduct != null && !listProduct.isEmpty()) {
+			return listProduct;
+		}
+		*/
+		return null;
+	}
+@Transactional
+	public Product getItem(int id) {
+		// TODO Auto-generated method stub
+		Product product=sessionFactory.getCurrentSession().get(Product.class, id);
+		
+		 return product;
+	     
+	}
 	}

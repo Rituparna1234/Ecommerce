@@ -1,5 +1,12 @@
-package com.spring.test;
+/*package com.spring.test;
+
 import static org.junit.Assert.*;
+import java.util.Iterator;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -8,77 +15,72 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+
 import com.spring.config.DBConfig;
-import com.spring.dao.CartDAO;
 import com.spring.dao.ProductDAO;
-import com.spring.model.Cart;
 import com.spring.model.Product;
 
+
+
 @SuppressWarnings("unused")
-@ComponentScan("com.spring")
+@ComponentScan("com.niit")
 public class ProductTest 
-{	
-	/*@Autowired
-	private static Product product;
-	*/
+{
 	@Autowired
 	private static ProductDAO productDAO;
-	
 	
 	@SuppressWarnings("resource")
 	@BeforeClass
 	public static void initialize()
 	{
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
-		
 		context.register(DBConfig.class);
+		context.scan("com.spring.*");
 		context.refresh();
 		
-	//	product=(Product) context.getBean("product");
+		//product=(Product) context.getBean("product");
 		productDAO=(ProductDAO) context.getBean("productDAO");
-		
-		
+	
 	}
-	@Ignore
+	
+
 	@Test
-	public void saveProduct()
+	public void createProduct()
 	{
-		Product product=new Product();
-		//cart.setId(1);
-		product.setName("XYZ");
-		product.setPrice(2500);
-		//product.setId(78);
-		product.setQuantity(3);
-		
-		boolean flag=productDAO.saveProduct(product);
-		assertEquals("createCartTestCase", true, flag);
+		Product product = new Product();
+		product.setName("Munch");
+		product.setQuantity(7);
+		product.setP_category("Eclairs");
+		product.setPrice(456.45);
+		boolean flag=productDAO.createProduct(product);
+		assertEquals("createProductTestCase", true, flag);
 	}
+	
 	@Ignore
 	@Test
 	public void updateProduct()
 	{
-		Product product=new Product();
-		product.setName("XYZ");
-		product.setPrice(2500);
-		product.setQuantity(3);
-		
-	
-		
-		assertEquals("problem in cart", productDAO.updateProduct(product));
+		Product product = new Product();
+		boolean flag=productDAO.updateProduct(product);
+		assertEquals("createProductTestCase", true, flag);
 	}
 	
-	//@Ignore
+	@Ignore
 	@Test
 	public void deleteProduct()
 	{
 		Product product = new Product();
-		product.setName("xyz");
-		product.setQuantity(10);
-		product.setPrice(500);
-		boolean flag=productDAO.deleteProduct(98);
-		assertEquals("createproductTestCase", true, flag);
+		boolean flag=productDAO.deleteProduct(104);
+		assertEquals("createProductTestCase", true, flag);
 	}
 	
+	@Ignore
+	@Test
+	public void retrieveProduct()
+	{
+		Product product=new Product();
+		boolean listproduct=productDAO.getProduct(206);
+		assertNotNull("problrm in getting product by id", product);
+	}
 }
-
-
+*/

@@ -1,47 +1,45 @@
 package com.spring.model;
 
+
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.stereotype.Component;
 
+
 @Entity
 @Component
-public class Category {
-	
-	@Id
-	@GeneratedValue
-	private int id;
-	private String name;
-	private int quantity;
-	private double price;
+public class Category implements Serializable 
+{
 
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+private int category_id;
+private String category_Name;
+private String category_Description;
+
+
+public int getCategory_id() {
+	return category_id;
+}
+public void setCategory_id(int category_id) {
+	this.category_id = category_id;
+}
+public String getCategory_Name() {
+	return category_Name;
+}
+public void setCategory_Name(String category_Name) {
+	this.category_Name = category_Name;
+}
+public String getCategory_Description() {
+	return category_Description;
+}
+public void setCategory_Description(String category_Description) {
+	this.category_Description = category_Description;
+}
 
 }

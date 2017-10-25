@@ -1,32 +1,19 @@
-package com.spring.test;
-
+/*package com.spring.test;
 import static org.junit.Assert.*;
-
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
-
 import com.spring.config.DBConfig;
-import com.spring.dao.CategoryDAO;
 import com.spring.dao.SupplierDAO;
-import com.spring.model.Category;
 import com.spring.model.Supplier;
-
-
-@SuppressWarnings("unused")
-@ComponentScan("com.spring")
+@Ignore
+@ComponentScan("com.niit")
 public class SupplierTest {
-	
-	
 	@Autowired
-	private static Supplier supplier;
-	@Autowired	
- private static SupplierDAO supplierDAO;
+	private static SupplierDAO supplierDAO;
 	
 	@SuppressWarnings("resource")
 	@BeforeClass
@@ -34,29 +21,35 @@ public class SupplierTest {
 	{
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
 		context.register(DBConfig.class);
-		//context.scan("com.spring.*");
+		context.scan("com.niit.*");
 		context.refresh();
-		
-		supplier=(Supplier) context.getBean("supplier");
-		supplierDAO=(SupplierDAO) context.getBean("supplierDAO");
-		
 	
+		supplierDAO=(SupplierDAO) context.getBean("supplierDAO");
 	}
 	@Test
 	public void createSupplier()
 	{
-		Supplier supplier=new Supplier();
-		
-		supplier.setName("abc");
-		supplier.setQuantity(25);
-		supplier.setPrice(467);
-	
+		Supplier supplier = new Supplier();
+		supplier.setSupplier_Name("prime");
 		boolean flag=supplierDAO.saveSupplier(supplier);
-		
 		assertEquals("createSupplierTestCase", true, flag);
-		
-		
 	}
 	
+	@Ignore
+	@Test
+	public void updateSupplier()
+	{
+		Supplier supplier = new Supplier();
+		//boolean flag=supplierDAO.getSupplierById(supplier_id);
+		//assertEquals("createSupplierTestCase", true, flag);
+	}
 	
+	@Ignore
+	@Test
+	public void deleteSupplier()
+	{
+		//boolean flag=supplierDAO.removeSupplierById(140);
+	//	assertEquals("createSupplierTestCase", true, flag);
+	}
 }
+*/
