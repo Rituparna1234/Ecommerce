@@ -6,7 +6,7 @@
 <form  method="post" action="j_spring_security_check" class="form-horizontal" >
 
 	
-	
+	<jsp:include page="header.jsp" /> 
 
 	<div class="form-group">
 		<label for="User Email" class="col-xs-4 control-label">Email</label>
@@ -32,7 +32,7 @@
 			
 	
 		<input type="submit" value="Login" id="btn-add" class="btn btn-primary" >
-	
+	 <jsp:include page="footer.jsp" /> 
 	
 
 		

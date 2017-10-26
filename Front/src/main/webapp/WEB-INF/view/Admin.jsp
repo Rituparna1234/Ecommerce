@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin Page</title>
+<title>Example of Bootstrap 3 Dropdowns within a Navbar</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -19,6 +19,7 @@
 </style>
 </head>
 <body>
+
 <div class="bs-example">
     <nav id="myNavbar" class="navbar navbar-inverse" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -55,9 +56,8 @@
                             <li><a href="category">Category action</a></li>
                             <li><a href="supplier">Supplier action</a></li>
                             <li><a href="product">Product action</a></li>
-                              <li><a href="product">Cart action</a></li>
                             <li class="divider"></li>
-                         
+                            <!-- <li><a href="logout">Logout</a></li> -->
                          
                               <li> <a href="<c:url value="j_spring_security_logout" />">Logout</a></li>
                             
@@ -66,10 +66,11 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div><!-- /.navbar-collapse -->
         </div>
     </nav>
 </div>
 
+<jsp:include page="footer.jsp" />
 </body>
-</html> 
+</html>   

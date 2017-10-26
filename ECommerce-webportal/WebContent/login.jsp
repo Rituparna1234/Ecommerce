@@ -13,40 +13,44 @@
 </head>
 <body>
 <div>
-<nav class="navbar navbar-inverse" >
-<div class="container-fluid">
-<a class="navbar-brand" href="#">Home</a>
-<a class="navbar-brand" href="#">Basket</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome!</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Basket</a></li>
+    </ul>
   </div>
-  </div>
-  <div class="jumbotron">
+</nav>
+<div class="jumbotron">
   <h2>Login</h2>
-   <input type="button" class="btn btn-primary">Continue Shopping</button>
-</div>
-<h4>Please Login</h4>
-<form class="form-inline">
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" placeholder="Enter email"class="form-control" id="email">
-  </div>
-  </br>
-  </br>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password"placeholder="password" class="form-control" id="pwd">
-  </div>
+   </div>
+<div class="container">
+  <form action="/action_page.php">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-info">Submit</button>
   </form>
+  </div>
+  </div>
   </br>
   </br>
-   <button type="submit" class="btn btn-default">Log In</button>
-</form>
- <footer>
- </br>
- </br>
- </br>
- </br>
- 
-<p>© NIIT E-commerce case study project 2017 </footer>
+  </br>
+  </br>
+  </br>
+   <footer>
+ <p>© NIIT E-commerce case study project 2017 </footer>
   
 </body>
 </html>

@@ -1,59 +1,70 @@
 package com.spring.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import org.springframework.stereotype.Component;
-
 @Entity
-@Component("cart")
 public class Cart {
 	
+	@Column(name="cart_id")
 	@Id
 	@GeneratedValue
-	private int id;
-	private String name;
-	private int quantity;
-	private double price;
-	private String address;
-	private int contactno;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public double getPrice() {
-		return price;
-	}
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public double getContactno() {
-		return contactno;
-	}
-	public void setContactno(int contactno) {
-		this.contactno = contactno;
-	}
+private int id;
+private int productid;
+private String productName;
+private double ProductPrice;
+private int productQuantity;
+private double subTotal;
+private String status;
+private int userId;
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public int getProductid() {
+	return productid;
+}
+public void setProductid(int productid) {
+	this.productid = productid;
+}
+public String getProductName() {
+	return productName;
+}
+public void setProductName(String productName) {
+	this.productName = productName;
+}
+public double getProductPrice() {
+	return ProductPrice;
+}
+public void setProductPrice(double productPrice) {
+	ProductPrice = productPrice;
+}
+public int getProductQuantity() {
+	return productQuantity;
+}
+public void setProductQuantity(int productQuantity) {
+	this.productQuantity = productQuantity;
+}
+public double getSubTotal() {
+	return subTotal;
+}
+public void setSubTotal(double subTotal) {
+	this.subTotal = subTotal;
+}
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
+}
+public int getUserId() {
+	return userId;
+}
+public void setUserId(int userId) {
+	this.userId = userId;
+}
 
-	
-	}
+}
