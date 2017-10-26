@@ -37,6 +37,10 @@ public class CartController
 	
 	User user;
 		
+
+	
+	
+	
 	 @RequestMapping(value="addtoCart/{id}")
 	 public String addProductToCart(@PathVariable("id") int id,HttpSession session,Model model,RedirectAttributes attributes)
 	 {
@@ -57,7 +61,7 @@ public class CartController
 				cartDAO.saveProductToCart(item);
 				attributes.addFlashAttribute("ExistingMessage",  p.getName() +"is already exist");
 		
-				return "redirect:/CartPage";
+				return "index";
 		 } 
 	    else 
 	    {

@@ -18,8 +18,7 @@
     	margin: 20px;
     }
 </style>
-<%-- <jsp:include page="showProduct.jsp" />  --%>
-
+<%--<jsp:include page="showProduct.jsp" />  --%>
 </head>
 <body>
 ${ExistingMessage}
@@ -51,7 +50,7 @@ ${ExistingMessage}
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">MESSAGES<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="">Inbox</a></li>
+                            <li><a href="viewcart">cart</a></li>
                             <li><a href="#">Drafts</a></li>
                             <li><a href="#">Sent Items</a></li>
                             <li class="divider"></li>
@@ -114,51 +113,38 @@ ${ExistingMessage}
 </div>
 
 
-<div class="container">
-		<c:forEach items="${ProductList}" var="product">
-			<h2 style="color: blue">
-				<c:out value="${product.name }" />
-			</h2>
+<div class="container-fluid">
 
 
-			<div class="row">
-			
-				<img src="/Front/myImage/imageDisplay?id=${product.id}"class="rounded float-left"
-							class="img-responsive" style="width: 200px; height:120px">
-										<!--  <img src="/Front/myImage/imageDisplay?id=${product.id}"-->		
-										<!-- <div>				</div>-->
-			</div>
-
-			<div class="row">
-				<div class="img">
-					<div class="desc">
-						<p>
-						<div class="form-group">
-							<input type="text"  style="width: 400px;" class="form-control" value="${product.name}"
-								readonly="readonly">
-						</div>
-
-						<div class="form-group">
-							<input type="text" style="width: 400px;" class="form-control"
-								value="Rs. ${product.price}" readonly="readonly">
-						</div>
-						<div class="form-group">
-							<input type="text"style="width: 400px;" class="form-control"
-								value="${product.description}" readonly="readonly">
-						</div>
-						<div>
-							<form action="addtoCart/${product.id}">
-								<input type="submit" value="Add to Cart" class="btn btn-primary" >
-							</form>
-							
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</c:forEach>
-	</div><br/><br/><br/><br/>
+          
+        <div class="row">
+<c:forEach items="${ProductList}" var="product">     
+            <div class="col-md-3 col-sm-4">
+                <div class="thumbnail">
+                <img src="/Front/myImage/imageDisplay?id=${product.id}" alt="" width="298" height="398" />
+                <%-- <img src="<c:url value="/resources/assets/img/rv_1-gito-1.jpg"/>">
+                    --%> <div class="caption">
+                        <h3>${product.name}</h3>
+                        <ul>
+                         <p>${product.description}</p>
+                        <li>Price: Rs.<Strong>${product.price}</Strong></li>
+                       
+     
+                   <form:form action="addtoCart/${product.id}" method="POST">
+                                <input type="submit" value="Add to Cart" class="btn btn-primary">
+                                </form:form>
+                                
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+         
+           </c:forEach>       
+                </div>
+                
+         
+        </div>
+<br/><br/><br/><br/>
 	<jsp:include page="footer.jsp"></jsp:include> 
 </body>
 

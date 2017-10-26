@@ -21,7 +21,7 @@ public class ImageController {
 	@Autowired
 	ProductDAO productDAO;
 	
-	@RequestMapping(value = "/Front/myImage/imageDisplay?", method = RequestMethod.GET)
+	@RequestMapping(value = "myImage/imageDisplay", method = RequestMethod.GET)
 	  public void showImage(@RequestParam("id") int id, HttpServletResponse response,HttpServletRequest request) 
 			  throws ServletException, IOException{
 		
@@ -29,23 +29,10 @@ public class ImageController {
 		Product item = productDAO.getItem(id);
 		System.out.println(id);
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-		
-		//String yourBase64EncodedBytesString = new String(Base64.encodeBase64(content));
-		//System.out.println(new String(item.getItemImage()));
-		
 		response.getOutputStream().write(item.getImage());
-		
 		System.out.println("Image is");
-	
 		response.getOutputStream().close();
-		/*
-		byte[] encoded=Base64.encodeBase64(item.getItemImage());
-		String encodedString = new String(encoded);
-		request.setAttribute("image", encodedString);
-		ModelMap map = new ModelMap();
-		map.put("image", encodedString);
-		*/
-	
+		
 	}
 	
 

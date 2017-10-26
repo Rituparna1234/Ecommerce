@@ -1,4 +1,4 @@
-%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -45,7 +45,7 @@
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">MESSAGES<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="">Inbox</a></li>
+                            <li><a href="viewcart">viewcart</a></li>
                             <li><a href="#">Drafts</a></li>
                             <li><a href="#">Sent Items</a></li>
                             <li class="divider"></li>
